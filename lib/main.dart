@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-void main() { // main 스레드는 runApp을 실행시키고 종료 됨
+void main() {
+  // main 스레드는 runApp을 실행시키고 종료 됨
   runApp(FirstApp()); // 비동기로 실행됨(이벤트 루프에 등록이 됨)
   // sleep(Duration(seconds: 3));
   // print("main종료");
@@ -14,59 +15,39 @@ class FirstApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.blue,
-            title: Text("First App"),
-            leading: Icon(Icons.menu),
-          ),
-          body: Container(
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  color: Colors.green,
-                  width: 50,
-                ),
-                Container(
-                  color: Colors.red,
-                  width: 100,
-                ),
-                Container(
-                  color: Colors.orange,
-                  width: 200,
-                )
-              ],
-            ),
-          ),
-
-          floatingActionButton: FloatingActionButton(
-            child: Text("button"),
-            onPressed: () {
-              print("버튼 클릭됨");
-            },
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: [
-              BottomNavigationBarItem(
-                  label: "hello",
-                  icon: Icon(
-                    Icons.access_alarm_rounded,
-                  )),
-              BottomNavigationBarItem(
-                  label: "hello",
-                  icon: Icon(
-                    Icons.access_alarm_rounded,
-                  ))
-            ],
-            backgroundColor: Colors.lightGreenAccent,
-          ),
+          body: HomeApp(),
         ),
       ),
+    );
+  }
+}
+
+class HomeApp extends StatelessWidget {
+  const HomeApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var m = MediaQuery.of(context);
+    print("넓이: ${m.size.width}");
+    print("높이: ${m.size.height}");
+    print("safearea: ${m.padding.top}");
+
+    return Column(
+      children: [
+        Container(
+          height: (m.size.height - 24) * 0.7,
+          color: Colors.blue,
+        ),
+        Container(
+          height: (m.size.height - 24) * 0.3,
+          color: Colors.redAccent,
+        ),
+      ],
     );
   }
 }
