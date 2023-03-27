@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -23,29 +22,52 @@ class FirstApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          body: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
+            body: ListView.builder(
+          itemCount: 5,
+          itemBuilder: (BuildContext context, int index) {
             return buildColumn(index);
-          })
-        ),
+          },
+        )),
       ),
     );
   }
 
-  Column buildColumn(int index) {
+  Widget buildColumn(int index) {
     return Column(
-            children: [
-              Container(
-                width: double.infinity,
-                height: 50,
-                color: Colors.cyan[colorCodes[index]],
-                child: Text("데이터 : ${data[index]}"),
+      children: [
+        ListTile(
+          title: Text("제목"),
+          subtitle: Text("부제목"),
+          leading: Icon(Icons.account_box_sharp),
+          onTap: () {
+            print("눌러짐");
+          },
+        ),
+        Row(
+          children: [
+            Expanded(
+              flex: 3,
+              child: Container(
+                height: 1,
+                color: Colors.cyan,
               ),
-              Container(
-                height: 5,
-              )
-            ],
-          );
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                child: Icon(Icons.account_balance_outlined),
+              ),
+            ),
+            Expanded(
+              flex: 3,
+              child: Container(
+                height: 1,
+                color: Colors.redAccent,
+              ),
+            )
+          ],
+        ),
+      ],
+    );
   }
 }
