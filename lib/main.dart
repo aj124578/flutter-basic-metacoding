@@ -1,3 +1,4 @@
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -11,43 +12,40 @@ void main() {
 
 // 저장만 하면 화면이 자동으로 리로드 됨
 class FirstApp extends StatelessWidget {
-  const FirstApp({Key? key}) : super(key: key);
+  FirstApp({Key? key}) : super(key: key);
+
+  final colorCodes = [600, 500, 300, 200, 100];
+  final data = ['가', '나', '다', '라', '마'];
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          body: HomeApp(),
+          body: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+            return buildColumn(index);
+          })
         ),
       ),
     );
   }
-}
 
-class HomeApp extends StatelessWidget {
-  const HomeApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    var m = MediaQuery.of(context);
-    print("넓이: ${m.size.width}");
-    print("높이: ${m.size.height}");
-    print("safearea: ${m.padding.top}");
-
+  Column buildColumn(int index) {
     return Column(
-      children: [
-        Container(
-          height: (m.size.height - 24) * 0.7,
-          color: Colors.blue,
-        ),
-        Container(
-          height: (m.size.height - 24) * 0.3,
-          color: Colors.redAccent,
-        ),
-      ],
-    );
+            children: [
+              Container(
+                width: double.infinity,
+                height: 50,
+                color: Colors.cyan[colorCodes[index]],
+                child: Text("데이터 : ${data[index]}"),
+              ),
+              Container(
+                height: 5,
+              )
+            ],
+          );
   }
 }
