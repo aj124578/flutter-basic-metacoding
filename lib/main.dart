@@ -19,17 +19,12 @@ class FirstApp extends StatelessWidget {
       home: SafeArea(
         child: Scaffold(
           body: Container(
-            height: double.infinity,
-            width: double.infinity,
-            color: Colors.blueGrey,
             alignment: Alignment(1.0, 1.0),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(text: "안녕", style: TextStyle(color: Colors.white)),
-                  TextSpan(text: "방가~~~~~~~~~~~~~~~~~~~~~~~~~~~#ㅇㄴㅁ시ㅏㅓㄴ아ㅣ선ㅇ마ㅣ섬;ㅏㅣㄴ어시ㅏㅁㄴ어시ㅏㅁㅇ너시ㅏㅁㄴ어시ㅏ;ㅇㅁ너;사ㅣ"),
-                ]
-              ),
+            child: Image.asset(
+              "assets/images/dora.png",
+              height: 300,
+              width: 100,
+              fit: BoxFit.cover
             ),
           ),
         ),
