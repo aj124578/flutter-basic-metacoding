@@ -13,61 +13,27 @@ void main() {
 class FirstApp extends StatelessWidget {
   FirstApp({Key? key}) : super(key: key);
 
-  final colorCodes = [600, 500, 300, 200, 100];
-  final data = ['가', '나', '다', '라', '마'];
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-            body: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (BuildContext context, int index) {
-            return buildColumn(index);
-          },
-        )),
+          body: Container(
+            height: double.infinity,
+            width: double.infinity,
+            color: Colors.blueGrey,
+            alignment: Alignment(1.0, 1.0),
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(text: "안녕", style: TextStyle(color: Colors.white)),
+                  TextSpan(text: "방가~~~~~~~~~~~~~~~~~~~~~~~~~~~#ㅇㄴㅁ시ㅏㅓㄴ아ㅣ선ㅇ마ㅣ섬;ㅏㅣㄴ어시ㅏㅁㄴ어시ㅏㅁㅇ너시ㅏㅁㄴ어시ㅏ;ㅇㅁ너;사ㅣ"),
+                ]
+              ),
+            ),
+          ),
+        ),
       ),
-    );
-  }
-
-  Widget buildColumn(int index) {
-    return Column(
-      children: [
-        ListTile(
-          title: Text("제목"),
-          subtitle: Text("부제목"),
-          leading: Icon(Icons.account_box_sharp),
-          onTap: () {
-            print("눌러짐");
-          },
-        ),
-        Row(
-          children: [
-            Expanded(
-              flex: 3,
-              child: Container(
-                height: 1,
-                color: Colors.cyan,
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                child: Icon(Icons.account_balance_outlined),
-              ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Container(
-                height: 1,
-                color: Colors.redAccent,
-              ),
-            )
-          ],
-        ),
-      ],
     );
   }
 }
