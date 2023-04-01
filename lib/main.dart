@@ -18,14 +18,18 @@ class FirstApp extends StatelessWidget {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          body: Container(
-            alignment: Alignment(1.0, 1.0),
-            child: Image.asset(
-              "assets/images/dora.png",
-              height: 300,
-              width: 100,
-              fit: BoxFit.cover
-            ),
+          body: Column(
+            children: [
+            InkWell(
+              onTap: () {
+                print("inkWell 버튼 클릭 됨");
+              },
+              child: Container(
+                child: Text("커스텀 버튼"),
+                color: Colors.cyan,
+              ),
+            )
+            ],
           ),
         ),
       ),
