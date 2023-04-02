@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,72 +11,35 @@ class FirstApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.white,
-          body: Center(
-            child: Container(
-              color: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Image.asset(
-                    "assets/images/banner.png",
-                    width: 350,
-                    height: 430,
-                  ),
-                  const SizedBox(
-                    height: 2,
-                  ),
-                  const Text("Needlework",
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w800,
-                      )),
-                  const Text("is voguish",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w800,
-                      )),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Text(
-                    "Handicraft lessons from",
-                    style: TextStyle(color: Colors.black45),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  const Text(
-                    "the bset designers",
-                    style: TextStyle(color: Colors.black45),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      print("버튼 클릭됨");
-                    },
-                    child: const Text("Get Started"),
-                    style: ButtonStyle(
-                      fixedSize: MaterialStateProperty.all(const Size(160, 55)),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18))),
-                      backgroundColor: MaterialStateProperty.all(Colors.black87),
-                      foregroundColor: MaterialStateProperty.all(Colors.white),
-                    ),
-                  )
-                ],
-              ),
+        // theme: ThemeData(
+        //   appBarTheme: AppBarTheme(
+        //       color: Colors.white,
+        //       titleTextStyle: TextStyle(color: Colors.black),
+        //       iconTheme: IconThemeData(color: Colors.black)),
+        // ),
+        debugShowCheckedModeBanner: false,
+        home: SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              elevation: 0,
+              leading: Icon(Icons.arrow_back),
+              title: Text("Credit Card",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 25,
+                    fontFamily:"MavenPro"
+                  )),
+              centerTitle: true,
+              actions: [
+                Row(
+                  children: [
+                    Icon(Icons.shopping_cart_outlined),
+                    SizedBox(width: 10),
+                  ],
+                )
+              ],
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
