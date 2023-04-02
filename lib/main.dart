@@ -5,85 +5,75 @@ void main() {
   runApp(FirstApp());
 }
 
-// 저장만 하면 화면이 자동으로 리로드 됨
-class FirstApp extends StatelessWidget {
+// StatelessWidget 위젯은 한번 그려지면 다시 안그려짐.
+// StatefulWidget 데이터 변경시 다시 그림이 그려짐. Wideget build 함수가 재실행 됨
+class FirstApp extends StatefulWidget {
   FirstApp({Key? key}) : super(key: key);
+
+  @override
+  State<FirstApp> createState() => _FirstAppState();
+}
+
+class _FirstAppState extends State<FirstApp> {
+  var isCheck = true;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
-          appBarTheme: AppBarTheme(
-              color: Colors.white,
-              titleTextStyle: TextStyle(color: Colors.black),
-              iconTheme: IconThemeData(color: Colors.black)),
-        ),
-        debugShowCheckedModeBanner: false,
-        home: SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-              elevation: 0,
-              leading: Icon(Icons.arrow_back),
-              title: Text("Credit Card",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 25,
-                      fontFamily: "MavenPro")),
-              centerTitle: true,
-              actions: [
-                Row(
-                  children: [
-                    Icon(Icons.shopping_cart_outlined),
-                    SizedBox(width: 10),
-                  ],
-                )
-              ],
-            ),
-            body: ListView(
-              children: [
-                ClipRRect(
-                  child: Container(
-                    height: 200,
-                    color: Colors.red,
-                  ),
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                ClipRRect(
-                  // 사진 끝 모서리를 둥글게
-                  child: Image.asset("assets/images/card.png"),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                ClipOval(
-                  // 사진을 동그랗게 하고 싶을 때
-                  child: Image.asset("assets/images/card.png"),
-                ),
-                ClipRect(
-                  child: Align(
-                    // 사진을 네모로 자르고 싶을 때
-                    child: Image.asset("assets/images/card.png"),
-                    heightFactor: 0.5,
-                    alignment: Alignment.topCenter,
-                  ),
-                ),
-                ClipPath(
-                  child: Image.asset("assets/images/card.png"),
-                  clipper: MyCliper(),
-                ),
-                ClipPath(
-                  child: Image.asset(
-                    "assets/images/card.png",
-                    fit: BoxFit.fill,
-                    height: 400,
-                  ),
-                  clipper: StarClipper(8),
-                ),
-                SizedBox(
-                  height: 200,
-                )
-              ],
-            ),
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+            color: Colors.white,
+            titleTextStyle: TextStyle(color: Colors.black),
+            iconTheme: IconThemeData(color: Colors.black)),
+      ),
+      debugShowCheckedModeBanner: false,
+      home: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            leading: Icon(Icons.arrow_back),
+            title: Text("Credit Card",
+                style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 25,
+                    fontFamily: "MavenPro")),
+            centerTitle: true,
+            actions: [
+              Row(
+                children: [
+                  Icon(Icons.shopping_cart_outlined),
+                  SizedBox(width: 10),
+                ],
+              )
+            ],
           ),
-        ));
+          body: Column(
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    print("인증하기 클릭됨");
+                    setState(() {// 데이터에 연관이 있는 위젯과 그 하위 위젯을 다시 그려라.
+                      isCheck = false;
+                    });
+                    print("isCheck : ${isCheck}");
+                  },
+                  child: Text(
+                    "인증하기",
+                  )),
+              AbsorbPointer(
+                absorbing: isCheck,
+                child: ElevatedButton(
+                  onPressed: () {
+                    print("전송하기 클릭됨");
+                  },
+                  child: Text("전송하기"),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
