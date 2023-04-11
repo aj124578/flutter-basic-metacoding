@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("앱바 제목"),
+        title: Text("홈"),
       ),
       body: Container(
         color: Colors.blue,
@@ -16,12 +16,13 @@ class HomePage extends StatelessWidget {
         child: ElevatedButton(
           child: Text("서브로 이동"),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SubPage(),
-              ),
-            );
+            Navigator.pushNamed(context, "/sub");
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => SubPage(),
+            //   ),
+            // );
           },
         ),
       ),

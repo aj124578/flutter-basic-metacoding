@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lab/screens/home_page.dart';
 
+import '../model/user.dart';
+
+
+
 class SubPage extends StatelessWidget {
   const SubPage({Key? key}) : super(key: key);
 
@@ -8,16 +12,18 @@ class SubPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("앱바 제목"),
+        title: Text("서브"),
       ),
       body: Container(
         color: Colors.red,
         alignment: Alignment.center,
         child: ElevatedButton(
-          child: Text("홈으로 이동"),
+          child: Text("피드로 이동"),
           onPressed: () {
-            Navigator.pop(context);
+            // Navigator.pop(context);
+            Navigator.pushNamed(context, "/feed", arguments:User( username: "ssar", password: "1234") );
           },
+
         ),
       ),
     );
