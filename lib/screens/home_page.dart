@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lab/screens/sub_page.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -7,34 +7,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("홈"),
-      ),
-      body: Column(
-        children: [
-          Hero(
-            tag: "banner",
-              child: Image.asset("assets/images/card.png")),
-          Expanded(
-            child: Container(
-              color: Colors.blue,
-              alignment: Alignment.center,
-              child: ElevatedButton(
-                child: Text("서브로 이동"),
-                onPressed: () {
-                  Navigator.pushNamed(context, "/sub");
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => SubPage(),
-                  //   ),
-                  // );
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
+        body: Container( // 자식의 크기에 맞춰짐. 하지만 정렬을 하면 크기로 인한 제약이 없어짐
+          color: Colors.green,
+          child: Align(child: Text("안녕"), alignment: Alignment.bottomLeft,),
+        ),
+
     );
   }
 }
