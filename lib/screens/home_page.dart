@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
+import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -7,11 +8,27 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container( // 자식의 크기에 맞춰짐. 하지만 정렬을 하면 크기로 인한 제약이 없어짐
-          color: Colors.green,
-          child: Align(child: Text("안녕"), alignment: Alignment.bottomLeft,),
-        ),
-
+      body: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: Image.asset(
+              "assets/images/gold.jpg",
+              fit: BoxFit.cover,
+            ),
+          ),
+          BackdropFilter(
+            filter: ImageFilter.blur(
+              sigmaX: 8,
+              sigmaY: 8,
+            ),
+            child: Container(
+              color: Colors.black.withOpacity(0.3),
+              ),
+          ),
+        ],
+      ),
     );
   }
 }
