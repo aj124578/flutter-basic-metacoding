@@ -18,14 +18,22 @@ class HomePage extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          BackdropFilter(
-            filter: ImageFilter.blur(
-              sigmaX: 8,
-              sigmaY: 8,
-            ),
-            child: Container(
-              color: Colors.black.withOpacity(0.3),
+          Positioned(
+            left: 20,
+            right: 20,
+            top: 180,
+            child: ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: 8,
+                  sigmaY: 8,
+                ),
+                child: Container(
+                  height: 100,
+                  color: Colors.black.withOpacity(0.1),
+                  ),
               ),
+            ),
           ),
         ],
       ),
