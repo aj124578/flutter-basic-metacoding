@@ -1,16 +1,8 @@
-# flutter_lab
+# fluter 위젯 블로깅
+https://sandy-rail-5f3.notion.site/eab67301d7b54045838597d5c381da6a
 
-A new Flutter project.
 
-## Getting Started
+## ui 만들기
+https://sandy-rail-5f3.notion.site/ui-afb3cc1912594b6e87cfc60d0254849a
+![ui만들기](https://user-images.githubusercontent.com/122362662/235409890-b047bb0f-e009-4aa4-afad-afc935ed58b8.png)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
